@@ -1,0 +1,96 @@
+body {
+  background-color: rgb(255, 255, 255);
+}
+.app {
+  margin: 0 auto;
+  padding: 15px;
+  align-items: center;
+}
+
+.start-header {
+  text-align: center;
+  align-items: center;
+  margin: 0;
+}
+
+.btn {
+  background-color: rgb(12, 116, 180);
+  color: wheat;
+  font-weight: bold;
+  width: 110px;
+  height: 35px;
+  border-radius: 26px;
+  cursor: pointer;
+}
+.buttonWrapper {
+  margin: 0 auto;
+  margin-top: 30px;
+}
+.start-btn {
+  width: 200px;
+  height: 50px;
+  background-image: linear-gradient(rgb(6, 40, 134), rgb(12, 116, 180));
+  color: wheat;
+  font-weight: bold;
+  border-radius: 28px;
+  cursor: pointer;
+}
+.replay-btn:hover {
+  background-color: rgb(12, 116, 180);
+  color: whitesmoke;
+}
+.score {
+  width: fit-content;
+  background-color: whitesmoke;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px rgb(12, 116, 180) solid;
+}
+
+.overall-set-score {
+  color: rgb(12, 116, 180);
+  position: fixed;
+  top: 2px;
+  left: 0;
+}
+.icons {
+  padding: 0;
+}
+
+.img2,
+.img1 {
+  width: 50px;
+}
+
+.message,
+.icons,
+.buttonWrapper {
+  text-align: center;
+}
+
+.hidden {
+  transition-property: opacity, visibility;
+  transition-duration: 1.2s, 0s;
+  transition-delay: 0s, 1s;
+  visibility: hidden;
+  opacity: 0;
+}
+.visible {
+  display: block;
+}
+
+@media screen and (max-width: 500px) {
+  .buttonWrapper {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    max-width: fit-content;
+  }
+
+  .btn {
+    text-align: center;
+  }
+}
