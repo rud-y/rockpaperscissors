@@ -14,10 +14,9 @@ window.onload = () => {
     rock: "images/rock.png",
     paper: "images/paper.png",
     scissors: "images/scissors.gif",
-    undefined: "images/question.png",
+    undefined: "images/handsup.png",
   };
   ///////////////////////
-  //////////////////////
 
   function showButtons() {
     let buttonWrapper = document.querySelector(".buttonWrapper");
@@ -32,9 +31,10 @@ window.onload = () => {
     buttons[i].addEventListener("click", playGame);
   }
 
-  // START THE GAME by clicking one of the three options (r, p, s)
-
+  // START THE GAME ///////// ///
+  // by clicking one of the three options (r, p, s buttons)
   function playGame(e) {
+    score.classList.remove("hidden");
     //PLAYER
     let playerSelection = e.target.innerText;
     if (playerSelection === "ROCK") {
@@ -63,8 +63,6 @@ window.onload = () => {
       opponentIcon.setAttribute("src", images.scissors);
     }
 
-    console.log(playerSelection + ":" + opponentSelection);
-
     // Result as a String (either Player, Opponent or Draw)
     let result = checkWinner(playerSelection, opponentSelection);
 
@@ -77,7 +75,6 @@ window.onload = () => {
     } else {
       result;
     }
-    console.log(result);
 
     // Display the score on webpage
     score.style.padding = "10px";
@@ -98,10 +95,6 @@ window.onload = () => {
         endGame(tempScore);
       }
     });
-
-    //      `${overallSetScore[0] + 1} : ${overallSetScore[1]}`
-    //     `${overallSetScore[0]} : ${overallSetScore[1] + 1}`
-    //      overallSetScoreDiv.innerHTML = `SETS -> ${overallSetScore}`;
 
     // Text output for each round
     messageOutput(
@@ -126,7 +119,7 @@ window.onload = () => {
     }
   };
 
-  // END GAME
+  // END GAME /////////////
   // At the end of a game displays feedback div with final result message + Replay btn
   function endGame(scoreArray) {
     // Removing replayBtn from prev. round
@@ -135,17 +128,19 @@ window.onload = () => {
     // OVERALL SET SCORE set after each round
     if (tempScore[0] > tempScore[1]) {
       overallSetScore[0]++;
+      score.style.border = "3px green solid";
     }
     if (tempScore[0] < tempScore[1]) {
       overallSetScore[1]++;
+      score.style.border = "3px red solid";
     }
     overallSetScoreDiv.innerHTML = `SETS [ ${overallSetScore[0]}:${overallSetScore[1]} ]`;
 
     if (scoreArray[0] < scoreArray[1]) {
       btnWrapper.style.backgroundColor = "#ff5c5c";
-      btnWrapper.textContent = `You LOST! 😯`;
+      btnWrapper.textContent = `😯 You LOST!`;
       btnWrapper.style.fontWeight = "bold";
-      btnWrapper.style.color = "white";
+      btnWrapper.style.color = "rgb(248, 234, 206)";
       btnWrapper.style.width = "fit-content";
       btnWrapper.style.fontSize = "25px";
       btnWrapper.style.padding = "10px";
@@ -154,10 +149,10 @@ window.onload = () => {
     }
     if (scoreArray[0] > scoreArray[1]) {
       btnWrapper.style.backgroundColor = "#8dc9ad";
-      btnWrapper.textContent = "Congrats! 😉 You WON the round! ";
+      btnWrapper.textContent = "😉 You WON the round! ";
       btnWrapper.style.fontWeight = "bold";
-      btnWrapper.style.color = "white";
-      btnWrapper.style.width = "330px";
+      btnWrapper.style.color = "rgb(248, 234, 206)";
+      btnWrapper.style.width = "fit-content";
       btnWrapper.style.fontSize = "25px";
       btnWrapper.style.padding = "10px";
       btnWrapper.style.margin = "auto";
@@ -167,22 +162,27 @@ window.onload = () => {
     let replayBtn = document.createElement("button");
     replayBtn.classList.add("replay-btn");
     replayBtn.textContent = "Replay";
-    replayBtn.style.width = "300px";
+    replayBtn.style.display = "block";
+    replayBtn.style.width = "210px";
     replayBtn.style.height = "40px";
     replayBtn.style.backgroundColor = "white";
     replayBtn.style.color = "#569bea";
     replayBtn.style.fontWeight = "bold";
     replayBtn.style.fontSize = "25px";
     replayBtn.style.borderRadius = "18px";
-    replayBtn.style.display = "block";
     replayBtn.style.margin = "auto";
     replayBtn.style.marginTop = "20px";
     app.appendChild(replayBtn);
 
     replayBtn.onmouseover = function () {
-      this.style.backgroundColor = "rgb(12, 116, 180)";
+      this.style.backgroundColor = "rgb(31, 34, 35)";
       this.style.color = "white";
       this.style.cursor = "pointer";
+    };
+
+    replayBtn.onmouseout = function () {
+      this.style.backgroundColor = "white";
+      this.style.color = "rgb(12, 116, 180)";
     };
 
     //Replay event
@@ -190,9 +190,11 @@ window.onload = () => {
       removeChildren(btnWrapper);
 
       ///////////////////////
-      btnWrapper.style.display = "block";
-      btnWrapper.style.textAlign = "center";
-
+      // btnWrapper.style.display = "grid";
+      // btnWrapper.style.textAlign = "center";
+      // btnWrapper.style.justifyContent = "center";
+      // btnWrapper.style.alignItems = "center";
+      btnWrapper.style.backgroundColor = "white";
       for (let i = 0; i < buttons.length; i++) {
         btnWrapper.appendChild(buttons[i]);
         buttons[i].classList.add(".btn");
@@ -201,6 +203,7 @@ window.onload = () => {
       tempScore = [0, 0];
       score.innerHTML = `Player ${tempScore[0]} : ${tempScore[1]} Opponent`;
       score.style.color = "darkgray";
+      score.style.border = "1px black solid";
       messageOutput("<b>LET'S START AGAIN</b>");
       playerIcon.setAttribute("src", images.undefined);
       opponentIcon.setAttribute("src", images.undefined);

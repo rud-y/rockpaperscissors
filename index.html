@@ -11,14 +11,21 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap"
+      rel="stylesheet"
+    />
     <script type="application/javascript" src="app.js"></script>
   </head>
   <body>
     <div class="app">
       <div class="overall-set-score"></div>
-      <div class="start-header visible">
-        <h2>Rock, Paper, Scissors</h2>
+
+      <div class="start-header">
+        <h2>✊Rock ✋Paper 🖖Scissors</h2>
         <p>Reach the score <b>5</b> first!</p>
+        <p>[Keeps track of Sets]</p>
         <button class="start-btn">P L A Y</button>
       </div>
       <div class="icons">
@@ -27,19 +34,19 @@
       </div>
 
       <div class="message"></div>
-      <div class="score"></div>
+      <div class="score hidden"></div>
 
       <div class="buttonWrapper hidden">
-        <ul>
-          <button type="button" class="btn">ROCK</button>
-          <button type="button" class="btn">PAPER</button>
-          <button type="button" class="btn">SCISSORS</button>
-        </ul>
+        <button type="button" class="btn">ROCK</button>
+        <button type="button" class="btn">PAPER</button>
+        <button type="button" class="btn">SCISSORS</button>
       </div>
     </div>
 
     <footer>
-      <!-- <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
+      <div class="footer-info">
+        Icons by <a href="https://icons8.com/">Icons8</a>
+      </div>
     </footer>
   </body>
 </html>
