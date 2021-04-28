@@ -18,12 +18,19 @@ window.onload = () => {
   };
   ///////////////////////
 
+  app.onmouseover = function () {
+    document.body.style.transition = "1s all ease-in-out";
+    document.body.style.backgroundColor = "var(--the-blue)";
+    app.style.backgroundColor = "white";
+  };
+
   function showButtons() {
     let buttonWrapper = document.querySelector(".buttonWrapper");
     buttonWrapper.classList.remove("hidden");
     startHeader = document.querySelector(".start-header");
     app.removeChild(startHeader);
   }
+
   let start = document.querySelector(".start-btn");
   start.addEventListener("click", showButtons);
 
@@ -134,11 +141,11 @@ window.onload = () => {
       overallSetScore[1]++;
       score.style.border = "3px red solid";
     }
-    overallSetScoreDiv.innerHTML = `SETS [ ${overallSetScore[0]}:${overallSetScore[1]} ]`;
+    overallSetScoreDiv.innerHTML = `SETS [ ${overallSetScore[0]} : ${overallSetScore[1]} ]`;
 
     if (scoreArray[0] < scoreArray[1]) {
       btnWrapper.style.backgroundColor = "#ff5c5c";
-      btnWrapper.textContent = `😯 You LOST!`;
+      btnWrapper.textContent = `😯 You LOST! 😯`;
       btnWrapper.style.fontWeight = "bold";
       btnWrapper.style.color = "rgb(248, 234, 206)";
       btnWrapper.style.width = "fit-content";
@@ -146,10 +153,22 @@ window.onload = () => {
       btnWrapper.style.padding = "10px";
       btnWrapper.style.margin = "auto";
       btnWrapper.style.borderRadius = "5px";
+      if (scoreArray[0] == 0 && scoreArray[1] == 5) {
+        btnWrapper.style.backgroundColor = "#ff5c5c";
+        btnWrapper.textContent = `😭 OOH! You LOST terribly! 😭`;
+        btnWrapper.style.fontWeight = "bold";
+        btnWrapper.style.color = "rgb(248, 234, 206)";
+        btnWrapper.style.width = "fit-content";
+        btnWrapper.style.fontSize = "25px";
+        btnWrapper.style.padding = "10px";
+        btnWrapper.style.margin = "auto";
+        btnWrapper.style.borderRadius = "5px";
+      }
     }
+
     if (scoreArray[0] > scoreArray[1]) {
       btnWrapper.style.backgroundColor = "#8dc9ad";
-      btnWrapper.textContent = "😉 You WON the round! ";
+      btnWrapper.textContent = "😉 You WON the round! 😉";
       btnWrapper.style.fontWeight = "bold";
       btnWrapper.style.color = "rgb(248, 234, 206)";
       btnWrapper.style.width = "fit-content";
@@ -157,6 +176,17 @@ window.onload = () => {
       btnWrapper.style.padding = "10px";
       btnWrapper.style.margin = "auto";
       btnWrapper.style.borderRadius = "5px";
+      if (scoreArray[0] == 5 && scoreArray[1] == 0) {
+        btnWrapper.style.backgroundColor = "#8dc9ad";
+        btnWrapper.textContent = "😎 5:0 ? WOW! AMAZING! 😎";
+        btnWrapper.style.fontWeight = "bold";
+        btnWrapper.style.color = "rgb(248, 234, 206)";
+        btnWrapper.style.width = "fit-content";
+        btnWrapper.style.fontSize = "25px";
+        btnWrapper.style.padding = "10px";
+        btnWrapper.style.margin = "auto";
+        btnWrapper.style.borderRadius = "5px";
+      }
     }
 
     let replayBtn = document.createElement("button");
@@ -165,23 +195,22 @@ window.onload = () => {
     replayBtn.style.display = "block";
     replayBtn.style.width = "210px";
     replayBtn.style.height = "40px";
-    replayBtn.style.backgroundColor = "white";
-    replayBtn.style.color = "#569bea";
+    replayBtn.style.backgroundColor = "rgb(217, 223, 230)";
+    replayBtn.style.color = "rgb(12, 116, 180)";
     replayBtn.style.fontWeight = "bold";
     replayBtn.style.fontSize = "25px";
     replayBtn.style.borderRadius = "18px";
-    replayBtn.style.margin = "auto";
-    replayBtn.style.marginTop = "20px";
+    replayBtn.style.margin = " 24px auto";
     app.appendChild(replayBtn);
 
     replayBtn.onmouseover = function () {
-      this.style.backgroundColor = "rgb(31, 34, 35)";
-      this.style.color = "white";
+      this.style.backgroundColor = "white";
+      this.style.color = "var(--the-blue)";
       this.style.cursor = "pointer";
     };
 
     replayBtn.onmouseout = function () {
-      this.style.backgroundColor = "white";
+      this.style.backgroundColor = "rgb(217, 223, 230)";
       this.style.color = "rgb(12, 116, 180)";
     };
 
