@@ -1,5 +1,5 @@
 :root {
-  --the-blue: rgb(12, 116, 180);
+  --the-blue: #0c74b4;
   --the-grey: rgb(217, 223, 230);
 }
 
@@ -10,7 +10,8 @@
   padding: 15px;
   align-items: center;
   max-width: 550px;
-  box-shadow: inset gray 3px 3px 30px 8px;
+  box-shadow: inset darkgray 2px 4px 16px 8px;
+  border: solid 1px white;
   border-radius: 15px;
   font-family: "Special Elite", cursive;
   font-size: 20px;
@@ -78,8 +79,8 @@
 .overall-set-score {
   color: var(--the-blue);
   position: absolute;
-  top: 10px;
-  left: 6px;
+  top: 20px;
+  left: 14px;
 }
 
 .icons {

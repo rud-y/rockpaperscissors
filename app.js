@@ -22,6 +22,7 @@ window.onload = () => {
     document.body.style.transition = "1s all ease-in-out";
     document.body.style.backgroundColor = "var(--the-blue)";
     app.style.backgroundColor = "white";
+    // app.style.boxShadow = "blue 2px 2px 25px 8px";
   };
 
   function showButtons() {
@@ -210,8 +211,8 @@ window.onload = () => {
     };
 
     replayBtn.onmouseout = function () {
-      this.style.backgroundColor = "rgb(217, 223, 230)";
-      this.style.color = "rgb(12, 116, 180)";
+      this.style.backgroundColor = "var(--the-grey)";
+      this.style.color = "var(--the-blue)";
     };
 
     //Replay event
