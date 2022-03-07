@@ -71,11 +71,11 @@ window.onload = () => {
       opponentIcon.setAttribute("src", images.scissors);
     }
 
-    // Result as a String (either Player, Opponent or Draw)
+    // Result as a String (either YOU, Opponent or Draw)
     let result = checkWinner(playerSelection, opponentSelection);
 
-    if (result == "Player") {
-      result += " wins!";
+    if (result == "You") {
+      result += " win!";
       tempScore[0]++;
     } else if (result == "Opponent") {
       result += " wins!";
@@ -86,7 +86,7 @@ window.onload = () => {
 
     // Display the score on webpage
     score.style.padding = "10px";
-    score.innerHTML = `Player <b>${tempScore[0]} : ${tempScore[1]}</b> Opponent`;
+    score.innerHTML = `You <b>${tempScore[0]} : ${tempScore[1]}</b> Opponent`;
 
     // Score - VISUAL DIFFERENCE throughout the rounds of a game(GREEN=winning, RED=losing, GREY=draw)
     if (tempScore[0] > tempScore[1]) {
@@ -96,13 +96,6 @@ window.onload = () => {
     } else {
       score.style.color = "rgb(131,130,130)";
     }
-
-    // calling endGame function when one of the scores reaches 5
-    tempScore.forEach((score) => {
-      if (score === 5) {
-        endGame(tempScore);
-      }
-    });
 
     // Text output for each round
     messageOutput(
@@ -114,6 +107,14 @@ window.onload = () => {
         "</b>" +
         "<br>"
     );
+
+    // Calling endGame function when one of the scores reaches 5
+    tempScore.forEach((score) => {
+      if (score === 5) {
+        messageOutput("<b>ANOTHER GAME?</b><br>WHY NOT?");
+        endGame(tempScore);
+      }
+    });
   }
   // General message of each round
   function messageOutput(mes) {
@@ -231,16 +232,16 @@ window.onload = () => {
       }
       replayBtn.classList.add("hidden");
       tempScore = [0, 0];
-      score.innerHTML = `Player ${tempScore[0]} : ${tempScore[1]} Opponent`;
+      score.innerHTML = `You  ${tempScore[0]} : ${tempScore[1]} Opponent`;
       score.style.color = "darkgray";
       score.style.border = "1px black solid";
-      messageOutput("<b>LET'S START AGAIN</b>");
+      messageOutput("<br><br>");
       playerIcon.setAttribute("src", images.undefined);
       opponentIcon.setAttribute("src", images.undefined);
     });
   }
 
-  // Returns Player, Opponent or Draw String
+  // Returns You, Opponent or Draw String
   function checkWinner(player, opponent) {
     if (player === opponent) {
       return "Draw";
@@ -249,21 +250,21 @@ window.onload = () => {
       if (opponent === "PAPER") {
         return "Opponent";
       } else {
-        return "Player";
+        return "You";
       }
     }
     if (player === "PAPER") {
       if (opponent === "SCISSORS") {
         return "Opponent";
       } else {
-        return "Player";
+        return "You";
       }
     }
     if (player === "SCISSORS") {
       if (opponent === "ROCK") {
         return "Opponent";
       } else {
-        return "Player";
+        return "You";
       }
     }
     return;

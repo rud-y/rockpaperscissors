@@ -42,23 +42,25 @@
   text-align: center;
   margin-bottom: 55px;
 }
+
 .start-btn {
-  width: 200px;
-  height: 50px;
-  background-image: linear-gradient(rgb(79, 105, 179), var(--the-blue));
-  color: wheat;
-  border-radius: 28px;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 18px;
+ background-image: linear-gradient(rgb(79, 105, 179), var(--the-blue));
+ border: none;
+ border-radius: 28px;
+ color: wheat;
+ cursor: pointer;
+ font-weight: bold;
+ font-size: 18px;
+ height: 50px;
+ width: 200px;
 }
 .start-btn:hover {
-  transition: 0.5s all ease-in-out;
-  font-size: 24px;
+  transition: 0.2s all ease-in-out;
+  font-size: 20px;
   color: var(--the-blue);
   font-weight: bold;
   background: var(--the-grey);
-  border: solid 3px black;
+  border: 2px solid var(--the-blue);
 }
 
 .replay-btn,
