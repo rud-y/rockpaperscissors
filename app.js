@@ -9,45 +9,54 @@ window.onload = () => {
   const overallSetScoreDiv = document.querySelector(".overall-set-score");
   const playerIcon = document.querySelector(".img1");
   const opponentIcon = document.querySelector(".img2");
-
+  
   const images = {
-    rock: "images/rock.png",
-    paper: "images/paper.png",
-    scissors: "images/scissors.gif",
-    undefined: "images/handsup.png",
+   rock: "images/rock.png",
+   paper: "images/paper.png",
+   scissors: "images/scissors.gif",
+   undefined: "images/handsup.png",
   };
+  
+  playerIcon.setAttribute("src", images.undefined);
+  opponentIcon.setAttribute("src", images.undefined);
+  
+  let numberOfRoundsElement = document.getElementById("number_of_rounds");
+  const roundStats = document.getElementById("round_stats");
+  
   ///////////////////////
-
+  
   app.onmouseover = function () {
     document.body.style.transition = "1s all ease-in-out";
     document.body.style.backgroundColor = "var(--the-blue)";
     app.style.backgroundColor = "white";
     // app.style.boxShadow = "blue 2px 2px 25px 8px";
-  };
-
-  function showButtons() {
+   };
+   
+   function showButtons() {
     let buttonWrapper = document.querySelector(".buttonWrapper");
     buttonWrapper.classList.remove("hidden");
     startHeader = document.querySelector(".start-header");
     app.removeChild(startHeader);
-  }
-
-  let start = document.querySelector(".start-btn");
-  start.addEventListener("click", showButtons);
-
-  for (let i = 0; i < buttons.length; i++) {
+   }
+   
+   let start = document.querySelector(".start-btn");
+   start.addEventListener("click", showButtons);
+   
+   for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", playGame);
-  }
-
-  // START THE GAME ///////// ///
-  // by clicking one of the three options (r, p, s buttons)
-  function playGame(e) {
+   }
+   
+   // START THE GAME ///////// ///
+   // by clicking one of the three options (r, p, s buttons)
+   function playGame(e) {
     score.classList.remove("hidden");
-    //PLAYER
+    roundStats.classList.remove("hidden");
+    numberOfRoundsElement.classList.add("hidden");
+    
+    // PLAYER
     let playerSelection = e.target.innerText;
     if (playerSelection === "ROCK") {
       playerIcon.setAttribute("src", images.rock);
-      // playerIcon.style.maxWidth = "100px";
       playerIcon.style.margin = "0 auto";
     }
     if (playerSelection === "PAPER") {
@@ -57,7 +66,7 @@ window.onload = () => {
       playerIcon.setAttribute("src", images.scissors);
     }
 
-    //OPPONENT
+    // OPPONENT
     let opponentSelection = Math.random();
     if (opponentSelection < 0.34) {
       opponentSelection = "ROCK";
@@ -71,24 +80,37 @@ window.onload = () => {
       opponentIcon.setAttribute("src", images.scissors);
     }
 
-    // Result as a String (either YOU, Opponent or Draw)
+    // Each round result as a string (either You, Opponent or Draw)
+    // Adding roundOutput stats ('WIN', 'LOSS', or 'DRAW')
     let result = checkWinner(playerSelection, opponentSelection);
+    let roundOutput = document.createElement("span");
+    roundOutput.classList.add("small-font");
 
     if (result == "You") {
       result += " win!";
       tempScore[0]++;
+      roundOutput.textContent = "W ";
     } else if (result == "Opponent") {
       result += " wins!";
       tempScore[1]++;
+      roundOutput.textContent = "L ";
+    } else if (result == "Draw") {
+      roundOutput.textContent = "D ";
     } else {
       result;
     }
+
+    roundStats.appendChild(roundOutput);
+    let numberOfRounds = roundStats.children.length;
+    numberOfRoundsElement.textContent = `${numberOfRounds} rounds`;
+   
+    // roundStats.appendChild(numberOfRoundsElement);
 
     // Display the score on webpage
     score.style.padding = "10px";
     score.innerHTML = `You <b>${tempScore[0]} : ${tempScore[1]}</b> Opponent`;
 
-    // Score - VISUAL DIFFERENCE throughout the rounds of a game(GREEN=winning, RED=losing, GREY=draw)
+    // Score - Visual difference throughout the rounds of a game based on the current score (GREEN=winning, RED=losing, GREY=draw)
     if (tempScore[0] > tempScore[1]) {
       score.style.color = "green";
     } else if (tempScore[0] < tempScore[1]) {
@@ -97,7 +119,7 @@ window.onload = () => {
       score.style.color = "rgb(131,130,130)";
     }
 
-    // Text output for each round
+    // Text output for each round of a game
     messageOutput(
       playerSelection +
         " vs " +
@@ -111,11 +133,12 @@ window.onload = () => {
     // Calling endGame function when one of the scores reaches 5
     tempScore.forEach((score) => {
       if (score === 5) {
-        messageOutput("<b>ANOTHER GAME?</b><br>WHY NOT?");
+        messageOutput("<b>ANOTHER GAME?</b>");
         endGame(tempScore);
       }
     });
   }
+
   // General message of each round
   function messageOutput(mes) {
     message.innerHTML = mes;
@@ -128,13 +151,12 @@ window.onload = () => {
     }
   };
 
-  // END GAME /////////////
-  // At the end of a game displays feedback div with final result message + Replay btn
+  // END GAME - final result message + Replay btn
   function endGame(scoreArray) {
-    // Removing replayBtn from prev. round
-    app.lastChild.remove();
+   app.lastChild.remove();
+   numberOfRoundsElement.classList.remove("hidden");
 
-    // OVERALL SET SCORE set after each round
+    // Overall set score set after each game
     if (tempScore[0] > tempScore[1]) {
       overallSetScore[0]++;
       score.style.border = "3px green solid";
@@ -170,7 +192,7 @@ window.onload = () => {
 
     if (scoreArray[0] > scoreArray[1]) {
       btnWrapper.style.backgroundColor = "#8dc9ad";
-      btnWrapper.textContent = "😉 You WON the round! 😉";
+      btnWrapper.textContent = "😉 You WON this game! 😉";
       btnWrapper.style.fontWeight = "bold";
       btnWrapper.style.color = "rgb(248, 234, 206)";
       btnWrapper.style.width = "fit-content";
@@ -180,7 +202,7 @@ window.onload = () => {
       btnWrapper.style.borderRadius = "5px";
       if (scoreArray[0] == 5 && scoreArray[1] == 0) {
         btnWrapper.style.backgroundColor = "#8dc9ad";
-        btnWrapper.textContent = "😎 5:0 ? WOW! AMAZING! 😎";
+        btnWrapper.textContent = "😎 5:0? WOW, AMAZING! 😎";
         btnWrapper.style.fontWeight = "bold";
         btnWrapper.style.color = "rgb(248, 234, 206)";
         btnWrapper.style.width = "fit-content";
@@ -219,6 +241,7 @@ window.onload = () => {
     //Replay event
     replayBtn.addEventListener("click", () => {
       removeChildren(btnWrapper);
+      roundStats.innerHTML = "";
 
       ///////////////////////
       // btnWrapper.style.display = "grid";

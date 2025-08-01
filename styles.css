@@ -3,18 +3,62 @@
   --the-grey: rgb(217, 223, 230);
 }
 
+/* #app_wrap {
+ position: relative;
+ margin: auto;
+ margin-top: 30px;
+ padding: 15px;
+ align-items: center;
+ max-width: 750px;
+ box-shadow: inset darkgray 2px 4px 16px 8px;
+ border: solid 1px white;
+ border-radius: 15px;
+ font-family: "Special Elite", cursive;
+ font-size: 20px;
+ display: flex;
+ flex-flow: row nowrap;
+} */
+
 .app {
-  position: relative;
-  margin: auto;
-  margin-top: 30px;
-  padding: 15px;
-  align-items: center;
-  max-width: 550px;
-  box-shadow: inset darkgray 2px 4px 16px 8px;
-  border: solid 1px white;
-  border-radius: 15px;
-  font-family: "Special Elite", cursive;
-  font-size: 20px;
+ position: relative;
+ margin: auto;
+ margin-top: 30px;
+ padding: 15px;
+ align-items: center;
+ max-width: 750px;
+ box-shadow: inset darkgray 2px 4px 16px 8px;
+ border: solid 1px white;
+ border-radius: 15px;
+ font-family: "Special Elite", cursive;
+ font-size: 20px;
+}
+
+#stats {
+ left: 0;
+ top: 5;
+ padding-top: 4px;
+ padding-left: 4px;
+ position: absolute;
+}
+
+#round_stats, #number_of_rounds {
+ font-size: 16px;
+ margin: 0;
+ padding: 0;
+}
+ 
+.overall-set-score {
+  color: var(--the-blue);
+  font-size: 16px;
+  position: absolute;
+  top: 20px;
+  right: 10px;
+}
+
+.notes{
+ font-size: 14px;
+ padding: 0;
+ margin: 0;
 }
 
 .start-header {
@@ -50,13 +94,13 @@
  color: wheat;
  cursor: pointer;
  font-weight: bold;
- font-size: 18px;
+ /* font-size: 18px; */
  height: 50px;
  width: 200px;
 }
 .start-btn:hover {
   transition: 0.2s all ease-in-out;
-  font-size: 20px;
+  /* font-size: 20px; */
   color: var(--the-blue);
   font-weight: bold;
   background: var(--the-grey);
@@ -78,25 +122,22 @@
   border: 1px black solid;
 }
 
-.overall-set-score {
-  color: var(--the-blue);
-  position: absolute;
-  top: 20px;
-  left: 14px;
+.small-font {
+ font-size: 16px;
 }
 
+/* .icons, */
 .icons {
-  padding: 0;
-  margin: 30px;
-  text-align: center;
+ margin-top: 45px;
+ padding: 0;
+ text-align: center;
 }
 
 .img2,
 .img1 {
-  width: 30%;
+  width: 25%;
 }
 
-/* .icons, */
 .message,
 .score {
   text-align: center;

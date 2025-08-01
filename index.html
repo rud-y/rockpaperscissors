@@ -22,34 +22,42 @@
     <script type="application/javascript" src="app.js"></script>
   </head>
   <body>
+   
+   <!-- <div id="app_wrap"> -->
     <div class="app">
-      <div class="overall-set-score"></div>
-
-      <div class="start-header">
-        <h2>✊Rock ✋Paper 🖖Scissors</h2>
-        <p>Reach the score <b>5</b> first!</p>
-        <p>[Keeps track of Sets]</p>
-        <button class="start-btn">P L A Y</button>
-      </div>
-      <div class="icons">
-        <img class="img1" loading="lazy" />
-        <img class="img2" loading="lazy" />
-      </div>
-
-      <div class="message"></div>
-      <div class="score hidden"></div>
-
-      <div class="buttonWrapper hidden">
-        <button type="button" class="btn">ROCK</button>
-        <button type="button" class="btn">PAPER</button>
-        <button type="button" class="btn">SCISSORS</button>
-      </div>
+     <div id="stats">
+      <p id="number_of_rounds" class="hidden"></p>
+      <p id="round_stats" class="hidden small-font"></p>
+     </div>
+     
+     <div class="overall-set-score"></div>
+     <div class="icons">
+      <img class="img1" loading="lazy" />
+      <img class="img2" loading="lazy" />
+     </div>
+     
+     <div class="start-header">
+      <h2>✊Rock ✋Paper 🖖Scissors</h2>
+      <p>Reach the score <b>5</b> first!</p>
+      <button class="start-btn">PLAY</button>
+     </div>
+     
+     <div class="message"></div>
+     <div class="score hidden"></div>
+     
+     <div class="buttonWrapper hidden">
+      <button type="button" class="btn">ROCK</button>
+      <button type="button" class="btn">PAPER</button>
+      <button type="button" class="btn">SCISSORS</button>
+     </div>
     </div>
-
-    <footer>
-      <div class="footer-info">
-        Icons by <a href="https://icons8.com/">Icons8</a>
-      </div>
-    </footer>
+    <span class="notes">W=Win / L=Loss / D=Draw</span>
+   <!-- </div> -->
+    
+   <footer>
+     <div class="footer-info">
+       Icons by <a href="https://icons8.com/">Icons8</a>
+     </div>
+   </footer>
   </body>
 </html>
